@@ -3,3 +3,5 @@
 *.class
 .DS_Store
 *out
+settings.json
+*.pyc
