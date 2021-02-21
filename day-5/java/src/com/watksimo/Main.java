@@ -1,24 +1,30 @@
 package com.watksimo;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Main
 {
 
-    public static void main(String[] args) {
-        SeatList partOne = new SeatList(new String[]{"BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"});
+    public static void main(String[] args) throws IOException {
+        List<String> inputValues = new ArrayList<>(Files.readAllLines(Paths.get("../real-input.txt")));
+        SeatList partOne = new SeatList(inputValues);
         System.out.printf("Part 1: Maximum seat number is %d%n", partOne.getMaxSeatNumber());
+        System.out.printf("Part 2: Missing seat number is %d.%n", partOne.findMissingSeat());
     }
 }
 
 class SeatList {
 
-    ArrayList<Integer> SeatList;
+    List<Integer> SeatList;
 
-    public SeatList(String[] codeList) {
-        this.SeatList = new ArrayList<>(codeList.length);
-        for(int i=0; i<codeList.length; i++) {
-            int seatNum = this.getSeatFromCode(codeList[i]);
+    public SeatList(List<String> codeList) {
+        this.SeatList = new ArrayList<>(codeList.size());
+        for (String s : codeList) {
+            int seatNum = this.getSeatFromCode(s);
             this.SeatList.add(seatNum);
         }
     }
@@ -27,8 +33,16 @@ class SeatList {
         return Collections.max(this.SeatList);
     }
 
-    public ArrayList<Integer> getSeatList() {
-        return this.SeatList;
+    public int findMissingSeat() {
+        Collections.sort(this.SeatList);
+        int counter = 0;
+        for (int seatNumber : this.SeatList) {
+            if(counter != 0 && seatNumber - this.SeatList.get(counter-1) != 1) {
+                return seatNumber - 1;
+            }
+            counter++;
+        }
+        return -1;
     }
 
     private int getSeatID(int row, int column) {
@@ -45,7 +59,7 @@ class SeatList {
         } else {
             colStart = lPos;
         }
-        return new String[]{inputCode.substring(0, colStart), inputCode.substring(colStart, inputCode.length())};
+        return new String[]{inputCode.substring(0, colStart), inputCode.substring(colStart)};
     }
 
     private int get_code_value(String inputCode) throws Exception {
@@ -56,10 +70,10 @@ class SeatList {
             char codeChar = inputCode.charAt(i);
             double mid_diff_val = (max_val - min_val) / 2.0;
             if(codeChar == 'F' || codeChar == 'L') {  // Lower half
-                max_val = (double)Math.floor(max_val - mid_diff_val);
+                max_val = Math.floor(max_val - mid_diff_val);
             }
             if(codeChar == 'B' || codeChar == 'R') {  // Upper half
-                min_val = (double)Math.ceil(max_val - mid_diff_val);
+                min_val = Math.ceil(max_val - mid_diff_val);
             }
         }
 
