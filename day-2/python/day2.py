@@ -29,7 +29,7 @@ def part_two(input_filename):
   return valid_passwords
 
 if __name__ == "__main__":
-  p1_passwords = part_one("password_list.txt")
-  p2_passwords = part_two("password_list.txt")
+  p1_passwords = part_one("../password_list.txt")
+  p2_passwords = part_two("../password_list.txt")
   print("Part 1: {} valid passwords.".format(p1_passwords))
   print("Part 2: {} valid passwords.".format(p2_passwords))
