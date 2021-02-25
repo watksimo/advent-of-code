@@ -53,14 +53,17 @@ def evaluate_expression(exp_string, oper_prec_array):
     return evaluate_expression(new_string, oper_prec_array)
 
 def perform_operation(val1, val2, operator):
-    if operator == "*":
-        return str(int(val1) * int(val2))
-    if operator == "/":
-        return str(int(val1) / int(val2))
-    if operator == "+":
-        return str(int(val1) + int(val2))
-    if operator == "-":
-        return str(int(val1) - int(val2))
+    operation_switcher = {
+        "*": str(int(val1) * int(val2)),
+        "/": str(int(val1) / int(val2)),
+        "+": str(int(val1) + int(val2)),
+        "-": str(int(val1) - int(val2))
+    }
+    try:
+        return operation_switcher[operator]
+    except KeyError:
+        print(f"{operator} is not a handled operator.")
+        exit(1)
 
 if __name__=="__main__":
     input_filename = "real_input.txt"
@@ -77,5 +80,5 @@ if __name__=="__main__":
         part1_results.append(evaluate_expression(line_exp, part1_oper_prec))
         part2_results.append(evaluate_expression(line_exp, part2_oper_prec))
 
-    print("Part 1: Sum of all values is: {}".format(sum(part1_results)))
-    print("Part 2: Sum of all values is: {}".format(sum(part2_results)))
+    print(f"Part 1: Sum of all values is: {sum(part1_results)}")
+    print(f"Part 2: Sum of all values is: {sum(part2_results)}")
