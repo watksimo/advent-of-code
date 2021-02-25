@@ -1,3 +1,19 @@
+def remove_first_bracket(exp_string, eval_func):
+    open_idx = exp_string.find('(')
+    close_idx = 0
+    open_brack_cnt = 0
+    for idx, val in enumerate(exp_string):
+        if idx <= open_idx: continue
+        if val == '(': open_brack_cnt += 1
+        if val == ")":
+            if open_brack_cnt == 0:
+                close_idx = idx
+                break
+            else:
+                open_brack_cnt -= 1
+    mid_string = exp_string[open_idx+1:close_idx]
+    return exp_string[:open_idx] + str(eval_func(mid_string)) + exp_string[close_idx+1:]
+
 def regular_evaluate_expression(exp_string):
     if len(exp_string.strip().split(" ")) == 1:
         return int(exp_string.strip())
@@ -5,20 +21,7 @@ def regular_evaluate_expression(exp_string):
     new_string = ""
 
     if '(' in exp_string:
-        open_idx = exp_string.find('(')
-        close_idx = 0
-        open_brack_cnt = 0
-        for idx, val in enumerate(exp_string):
-            if idx <= open_idx: continue
-            if val == '(': open_brack_cnt += 1
-            if val == ")":
-                if open_brack_cnt == 0:
-                    close_idx = idx
-                    break
-                else:
-                    open_brack_cnt -= 1
-        mid_string = exp_string[open_idx+1:close_idx]
-        new_string = exp_string[:open_idx] + str(regular_evaluate_expression(mid_string)) + exp_string[close_idx+1:]
+        new_string = remove_first_bracket(exp_string, regular_evaluate_expression)
     elif '*' in exp_string or '/' in exp_string:
         exp_array = exp_string.split(" ")
         new_array = []
@@ -61,20 +64,7 @@ def part1_evaluate_expression(exp_string):
     new_string = ""
 
     if '(' in exp_string:
-        open_idx = exp_string.find('(')
-        close_idx = 0
-        open_brack_cnt = 0
-        for idx, val in enumerate(exp_string):
-            if idx <= open_idx: continue
-            if val == '(': open_brack_cnt += 1
-            if val == ")":
-                if open_brack_cnt == 0:
-                    close_idx = idx
-                    break
-                else:
-                    open_brack_cnt -= 1
-        mid_string = exp_string[open_idx+1:close_idx]
-        new_string = exp_string[:open_idx] + str(part1_evaluate_expression(mid_string)) + exp_string[close_idx+1:]
+        new_string = remove_first_bracket(exp_string, part1_evaluate_expression)
     elif '*' in exp_string or '/' in exp_string or '+' in exp_string or '-' in exp_string:
         exp_array = exp_string.split(" ")
         new_array = []
@@ -104,20 +94,7 @@ def part2_evaluate_expression(exp_string):
     new_string = ""
 
     if '(' in exp_string:
-        open_idx = exp_string.find('(')
-        close_idx = 0
-        open_brack_cnt = 0
-        for idx, val in enumerate(exp_string):
-            if idx <= open_idx: continue
-            if val == '(': open_brack_cnt += 1
-            if val == ")":
-                if open_brack_cnt == 0:
-                    close_idx = idx
-                    break
-                else:
-                    open_brack_cnt -= 1
-        mid_string = exp_string[open_idx+1:close_idx]
-        new_string = exp_string[:open_idx] + str(part2_evaluate_expression(mid_string)) + exp_string[close_idx+1:]
+        new_string = remove_first_bracket(exp_string, part2_evaluate_expression)
     elif '+' in exp_string or '-' in exp_string:
         exp_array = exp_string.split(" ")
         new_array = []
