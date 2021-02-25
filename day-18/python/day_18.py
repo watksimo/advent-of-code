@@ -1,4 +1,4 @@
-def evaluate_first_bracket(exp_string, eval_func, oper_prec_array):
+def evaluate_first_bracket(exp_string):
     open_idx = exp_string.find('(')
     close_idx = 0
     open_brack_cnt = 0
@@ -11,8 +11,10 @@ def evaluate_first_bracket(exp_string, eval_func, oper_prec_array):
                 break
             else:
                 open_brack_cnt -= 1
-    mid_string = exp_string[open_idx+1:close_idx]
-    return exp_string[:open_idx] + str(eval_func(mid_string, oper_prec_array)) + exp_string[close_idx+1:]
+    bracket_string = exp_string[open_idx+1:close_idx]
+    start_string = exp_string[:open_idx]
+    end_string = exp_string[close_idx+1:]
+    return bracket_string, start_string, end_string
 
 def operators_in_string(exp_string, op_array):
     for oper in op_array:
@@ -20,13 +22,16 @@ def operators_in_string(exp_string, op_array):
     return False
 
 def evaluate_expression(exp_string, oper_prec_array):
+    # Recursion base case
     if len(exp_string.strip().split(" ")) == 1:
         return int(exp_string.strip())
 
     new_string = ""
 
     if '(' in exp_string:
-        new_string = evaluate_first_bracket(exp_string, evaluate_expression, oper_prec_array)
+        bracket_string, start_string, end_string = evaluate_first_bracket(exp_string)
+        bracket_string = evaluate_expression(bracket_string, oper_prec_array)
+        new_string = start_string + str(bracket_string) + end_string
     else:
         for op_prec in oper_prec_array:
             if operators_in_string(exp_string, op_prec):
