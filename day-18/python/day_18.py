@@ -1,4 +1,4 @@
-def remove_first_bracket(exp_string, eval_func):
+def evaluate_first_bracket(exp_string, eval_func, oper_prec_array):
     open_idx = exp_string.find('(')
     close_idx = 0
     open_brack_cnt = 0
@@ -12,123 +12,40 @@ def remove_first_bracket(exp_string, eval_func):
             else:
                 open_brack_cnt -= 1
     mid_string = exp_string[open_idx+1:close_idx]
-    return exp_string[:open_idx] + str(eval_func(mid_string)) + exp_string[close_idx+1:]
+    return exp_string[:open_idx] + str(eval_func(mid_string, oper_prec_array)) + exp_string[close_idx+1:]
 
-def regular_evaluate_expression(exp_string):
+def operators_in_string(exp_string, op_array):
+    for oper in op_array:
+        if oper in exp_string: return True
+    return False
+
+def evaluate_expression(exp_string, oper_prec_array):
     if len(exp_string.strip().split(" ")) == 1:
         return int(exp_string.strip())
 
     new_string = ""
 
     if '(' in exp_string:
-        new_string = remove_first_bracket(exp_string, regular_evaluate_expression)
-    elif '*' in exp_string or '/' in exp_string:
-        exp_array = exp_string.split(" ")
-        new_array = []
-        op_idx = 0
-        for idx, val in enumerate(exp_array):
-            if val in ['*', '/']:
-                op_idx = idx
-                break
-        if op_idx > 2:
-            new_array = exp_array[:op_idx-1]
-
-        new_array.append(perform_operation(exp_array[op_idx-1], exp_array[op_idx+1], exp_array[op_idx]))
-        new_array.extend(exp_array[op_idx+2:])
-        new_string = " ".join(new_array)
-    elif '+' in exp_string or '-' in exp_string:
-        exp_array = exp_string.split(" ")
-        new_array = []
-        op_idx = 0
-        for idx, val in enumerate(exp_array):
-            if val in ['+', '-']:
-                op_idx = idx
-                break
-        if op_idx > 2:
-            new_array = exp_array[:op_idx-1]
-
-        new_array.append(perform_operation(exp_array[op_idx-1], exp_array[op_idx+1], exp_array[op_idx]))
-        new_array.extend(exp_array[op_idx+2:])
-        new_string = " ".join(new_array)
-    
+        new_string = evaluate_first_bracket(exp_string, evaluate_expression, oper_prec_array)
     else:
-        print("Unhandled")
-        exit(1)
+        for op_prec in oper_prec_array:
+            if operators_in_string(exp_string, op_prec):
+                exp_array = exp_string.split(" ")
+                new_array = []
+                op_idx = 0
+                for idx, val in enumerate(exp_array):
+                    if val in op_prec:
+                        op_idx = idx
+                        break
+                if op_idx > 2:
+                    new_array = exp_array[:op_idx-1]
+
+                new_array.append(perform_operation(exp_array[op_idx-1], exp_array[op_idx+1], exp_array[op_idx]))
+                new_array.extend(exp_array[op_idx+2:])
+                new_string = " ".join(new_array)
+                break
         
-    return regular_evaluate_expression(new_string)
-
-def part1_evaluate_expression(exp_string):
-    if len(exp_string.strip().split(" ")) == 1:
-        return int(exp_string.strip())
-
-    new_string = ""
-
-    if '(' in exp_string:
-        new_string = remove_first_bracket(exp_string, part1_evaluate_expression)
-    elif '*' in exp_string or '/' in exp_string or '+' in exp_string or '-' in exp_string:
-        exp_array = exp_string.split(" ")
-        new_array = []
-        op_idx = 0
-        for idx, val in enumerate(exp_array):
-            if val in ['*', '/', '+', '-']:
-                op_idx = idx
-                break
-        if op_idx > 2:
-            new_array = exp_array[:op_idx-1]
-
-        new_array.append(perform_operation(exp_array[op_idx-1], exp_array[op_idx+1], exp_array[op_idx]))
-        new_array.extend(exp_array[op_idx+2:])
-        new_string = " ".join(new_array)
-    
-    else:
-        print("Unhandled")
-        exit(1)
-    
-    
-    return part1_evaluate_expression(new_string)
-
-def part2_evaluate_expression(exp_string):
-    if len(exp_string.strip().split(" ")) == 1:
-        return int(exp_string.strip())
-
-    new_string = ""
-
-    if '(' in exp_string:
-        new_string = remove_first_bracket(exp_string, part2_evaluate_expression)
-    elif '+' in exp_string or '-' in exp_string:
-        exp_array = exp_string.split(" ")
-        new_array = []
-        op_idx = 0
-        for idx, val in enumerate(exp_array):
-            if val in ['+', '-']:
-                op_idx = idx
-                break
-        if op_idx > 2:
-            new_array = exp_array[:op_idx-1]
-
-        new_array.append(perform_operation(exp_array[op_idx-1], exp_array[op_idx+1], exp_array[op_idx]))
-        new_array.extend(exp_array[op_idx+2:])
-        new_string = " ".join(new_array)
-    elif '*' in exp_string or '/' in exp_string:
-        exp_array = exp_string.split(" ")
-        new_array = []
-        op_idx = 0
-        for idx, val in enumerate(exp_array):
-            if val in ['*', '/']:
-                op_idx = idx
-                break
-        if op_idx > 2:
-            new_array = exp_array[:op_idx-1]
-
-        new_array.append(perform_operation(exp_array[op_idx-1], exp_array[op_idx+1], exp_array[op_idx]))
-        new_array.extend(exp_array[op_idx+2:])
-        new_string = " ".join(new_array)
-    
-    else:
-        print("Unhandled")
-        exit(1)
-        
-    return part2_evaluate_expression(new_string)
+    return evaluate_expression(new_string, oper_prec_array)
 
 def perform_operation(val1, val2, operator):
     if operator == "*":
@@ -145,8 +62,15 @@ if __name__=="__main__":
     f = open(input_filename, "r")
     line_array = [line.strip() for line in f.readlines()]
 
-    result1_sum = sum([part1_evaluate_expression(line_exp) for line_exp in line_array])
-    print("Part 1: Sum of all values is: {}".format(result1_sum))
+    part1_oper_prec = [['*', '/', '+', '-']]
+    part2_oper_prec = [['+', '-'], ['*', '/']]
 
-    result2_sum = sum([part2_evaluate_expression(line_exp) for line_exp in line_array])
-    print("Part 2: Sum of all values is: {}".format(result2_sum))
+    part1_results = []
+    part2_results = []
+
+    for line_exp in line_array:
+        part1_results.append(evaluate_expression(line_exp, part1_oper_prec))
+        part2_results.append(evaluate_expression(line_exp, part2_oper_prec))
+
+    print("Part 1: Sum of all values is: {}".format(sum(part1_results)))
+    print("Part 2: Sum of all values is: {}".format(sum(part2_results)))
