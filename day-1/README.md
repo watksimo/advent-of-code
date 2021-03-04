@@ -1,2 +1,2 @@
-![Generic badge](https://img.shields.io/badge/Completion-Parts 1&2-green.svg)
-Day 19 - Report Repair
+https://img.shields.io/badge/Completed-Parts%201%262-greenDay
+<h1>19 - Report Repair</h1>
