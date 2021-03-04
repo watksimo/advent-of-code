@@ -9,5 +9,5 @@ My solutions to the 2020 [Advent of Code](https://adventofcode.com/2020) problem
 | 4 |  | :star: :star: |
 | 5 |  | :star: :star: |
 | 6 |  | :star: |
-| 18 | :star: :star: |  |
+| 18 |  | :star: :star: |
 | 19 |  |  |
