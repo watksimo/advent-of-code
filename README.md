@@ -12,3 +12,4 @@ My solutions to the 2020 [Advent of Code](https://adventofcode.com/2020) problem
 | [18: Operation Order](day-18) | :star: :star: |
 | [19: Monster Messages](day-19) |  |
 | [20: Jurassic Jigsaw](day-20) |  |
+| [Day 21: Allergen Assessment](day-21) |  |
