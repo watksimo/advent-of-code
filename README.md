@@ -12,6 +12,8 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [6: Custom Customs](2020/day-6) | :star: |
 | [18: Operation Order](2020/day-18) | :star: :star: |
 | [19: Monster Messages](2020/day-19) |  |
+| [20: Jurassic Jigsaw](2020/day-20) |  |
+| [21: Allergen Assessment](2020/day-21) |  |
 
 
 ## 2019
