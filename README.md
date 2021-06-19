@@ -18,3 +18,4 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | Day  | Stars |
 | ---  | ----- |
 | [1: The Tyranny of the Rocket Equation](2019/day-1) | :star: :star: |
+| [2: 1202 Program Alarm](2019/day-2) | :star: :star: |

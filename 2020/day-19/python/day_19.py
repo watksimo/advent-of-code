@@ -11,7 +11,7 @@ def create_rule_dict(line_array):
             rule_dict[rule_no] = split_line[1].replace('"', "")
         else:
             dep_rule = split_line[1].split(" | ")
-            dep_rule_array = [[int(rule_no) for rule_no in rule.split(" ")] for rule in dep_rule]
+            dep_rule_array = [[int(int_rule) for int_rule in rule.split(" ")] for rule in dep_rule]
             rule_dict[rule_no] = dep_rule_array
 
     return rule_dict
@@ -43,7 +43,6 @@ def recursive_rule_replace(rule):
     return rule
 
 def combine_rule_ands(rule_array):
-    
     new_array = rule_array
     type_array = [type(_) for _ in rule_array]
     if list not in type_array:
@@ -53,6 +52,11 @@ def combine_rule_ands(rule_array):
         new_array[idx] = combine_rule_ands(test_array)
 
     return new_array
+
+def create_password_array(input_array):
+    password_opts = []
+    if type(input_array) == list and len(input_array)==1 and type(input_array[0]) == list:
+        return input_array[0]
 
 
 def check_password(password, rule_key):
@@ -83,13 +87,19 @@ if __name__=="__main__":
             password_array.append(line)
 
     rule_dict = create_rule_dict(rule_array)
+    # print(rule_dict)
 
-    recursive_rule = recursive_rule_replace(rule_dict[7])
-    print(combine_rule_ands(recursive_rule))
+    # recursive_rule = recursive_rule_replace(rule_dict[7])
+    # print(combine_rule_ands(recursive_rule))
 
-    recursive_rule = recursive_rule_replace(rule_dict[6])
-    print(combine_rule_ands(recursive_rule))
+    # recursive_rule = recursive_rule_replace(rule_dict[6])
+    # print(combine_rule_ands(recursive_rule))
 
-    recursive_rule = recursive_rule_replace(rule_dict[0])
-    print(combine_rule_ands(recursive_rule))
+    recursive_rule = recursive_rule_replace(rule_dict[8])
+    rule_ands = combine_rule_ands(recursive_rule)
+    password_opts = create_password_array(rule_ands)
+    print(password_opts)
+
+    # recursive_rule = recursive_rule_replace(rule_dict[0])
+    # print(combine_rule_ands(recursive_rule))
 
