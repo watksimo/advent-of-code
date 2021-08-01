@@ -24,6 +24,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [3: Crossed Wires](2019/day-3) | :star: :star: |
 | [4: Secure Container](2019/day-4) | :star: :star: |
 | [5: Sunny with a Chance of Asteroids](2019/day-5) | :star: :star: |
+| [6: Universal Orbit Map](2019/day-6) | :star: |
 
 ### Completion Badges
 ![Completion](https://img.shields.io/badge/Completed-None-red.svg)
