@@ -103,9 +103,10 @@ def load_input(input_filename):
   f = open(input_filename, "r")
   return [int(val) for val in f.readline().split(",")]
 
-def amplifier_loop(num_aplifiers, intcode_array):
+def amplifier_loop(start_phase, end_phase, intcode_array):
+  num_completed = 0
   highest_output = 0
-  phase_list = list(permutations(range(num_aplifiers)))
+  phase_list = list(permutations(range(start_phase, end_phase+1)))
   computer_list = []
   for phase_combo in phase_list:
     amp_output = 0
@@ -120,13 +121,41 @@ def amplifier_loop(num_aplifiers, intcode_array):
       computer_list.append(int_comp)
       
       if amp_output is not None and amp_output > highest_output: highest_output = amp_output
+    
+  print("Computers setup")
+
+  comp_idx = 0
+  last_output = amp_output
+  while num_completed != len(computer_list):
+    curr_comp = computer_list[comp_idx]
+    if last_output is not None: curr_comp.input_queue.append(last_output)
+
+    amp_output = curr_comp.run_computer()
+
+    if amp_output is not None:
+      last_output = amp_output
+      if amp_output > highest_output: highest_output = amp_output
+    else:
+      last_output = None
+
+    if curr_comp.completed: num_completed += 1
+    comp_idx != 1
+    if comp_idx == len(computer_list) - 1: comp_idx = 0
+
   return highest_output
 
 if __name__ == '__main__':
-  input_array = load_input("../input.txt")
-  print("Input length: {}".format(len(input_array)))
+  # input_array = load_input("../input.txt")
+  # print("Input length: {}".format(len(input_array)))
 
-  output = amplifier_loop(5, input_array)
+  # output = amplifier_loop(0, 4, input_array)
+  
 
   # Solutions
+  input_array = [3,31,3,32,1002,32,10,32,1001,31,-2,31,1007,31,0,33,1002,33,7,33,1,33,31,31,1,32,31,31,4,31,99,0,0,0]
+  output = amplifier_loop(0, 4, input_array)
   print("Part 1: {}".format(output))
+
+  input_array = [3,52,1001,52,-5,52,3,53,1,52,56,54,1007,54,5,55,1005,55,26,1001,54,-5,54,1105,1,12,1,53,54,53,1008,54,0,55,1001,55,1,55,2,53,55,53,4,53,1001,56,-1,56,1005,56,6,99,0,0,0,0,10]
+  output = amplifier_loop(5, 9, input_array)
+  print("Part 2: {}".format(output))
