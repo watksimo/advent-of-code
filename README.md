@@ -26,7 +26,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [5: Sunny with a Chance of Asteroids](2019/day-5)     | :star: :star: |
 | [6: Universal Orbit Map](2019/day-6)                  | :star: :star: |
 | [7: Amplification Circuit](2019/day-7)                | :star:        |
-| [10: Monitoring Station](2019/day-10)                 |               |
+| [10: Monitoring Station](2019/day-10)                 | :star:        |
 
 ### Completion Badges
 ![Completion](https://img.shields.io/badge/Completed-None-red.svg)
