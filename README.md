@@ -1,5 +1,12 @@
 # Advent of Code
-My solutions to the Advent of Code problems for [2019](https://adventofcode.com/2019) & [2020](https://adventofcode.com/2020).
+My solutions to the Advent of Code problems for [2019](https://adventofcode.com/2019), [2020](https://adventofcode.com/2020) & [2021](https://adventofcode.com/2021).
+
+
+## 2021
+|                             Day                       |     Stars     |
+|                             ---                       |     -----     |
+| [1: Sonar Sweep](2021/day-1)                          | :star: :star: |
+
 
 ## 2020
 |                             Day                       |     Stars     |
