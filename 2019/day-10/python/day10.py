@@ -16,31 +16,39 @@ def solve_part1(input_array):
   asteroids = create_asteroid_dict(input_array)
 
   # Compare each asteroid to all other asteroids
-  for idx_str in asteroids:
-    for idx_str2 in asteroids:
+  for idx, idx_str in enumerate(asteroids):
+    for idx2, idx_str2 in enumerate(list(asteroids.keys())[idx:]):
       if idx_str != idx_str2:
         x1 = int(idx_str.split(",")[0])
         y1 = int(idx_str.split(",")[1])
         x2 = int(idx_str2.split(",")[0])
         y2 = int(idx_str2.split(",")[1])
         slope = math.atan2(y2-y1, x2-x1)
+        if slope not in asteroids[idx_str2]:
+          asteroids[idx_str2][slope] = {'cannot see': [], 'can see': idx_str}
         if slope not in asteroids[idx_str]:
           asteroids[idx_str][slope] = {'cannot see': [], 'can see': idx_str2}
         else:
           curr_see = asteroids[idx_str][slope]['can see']
+          curr_see2 = asteroids[idx_str2][slope]['can see']
           ref_x = x1
           ref_y = y1
           see_x = int(curr_see.split(",")[0])
           see_y = int(curr_see.split(",")[1])
+          see2_x = int(curr_see2.split(",")[0])
+          see2_y = int(curr_see2.split(",")[1])
           new_x = x2
           new_y = y2
           see_dist = math.dist((ref_x, ref_y), (see_x, see_y))
           new_dist = math.dist((ref_x, ref_y), (new_x, new_y))
           if see_dist < new_dist:
             asteroids[idx_str][slope]['cannot see'].append(idx_str2)
+            asteroids[idx_str2][slope]['cannot see'].append(idx_str)
           else:
             asteroids[idx_str][slope]['cannot see'].append(curr_see)
             asteroids[idx_str][slope]['can see'] = idx_str2
+            asteroids[idx_str2][slope]['cannot see'].append(curr_see)
+            asteroids[idx_str2][slope]['can see'] = idx_str
 
   viewable_asteroid_cnt = [(ast, len([(aa['can see']) for aa in asteroids[ast].values()])) for ast in asteroids]
 
