@@ -7,6 +7,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 |                             ---                       |     -----     |
 | [1: Sonar Sweep](2021/day-1)                          | :star: :star: |
 | [2: Dive!](2021/day-2)                                | :star: :star: |
+| [3: Binary Diagnostic](2021/day-3)                    | :star:        |
 
 
 ## 2020
