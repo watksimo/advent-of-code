@@ -7,7 +7,14 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 |                             ---                       |     -----     |
 | [1: Sonar Sweep](2021/day-1)                          | :star: :star: |
 | [2: Dive!](2021/day-2)                                | :star: :star: |
-| [3: Binary Diagnostic](2021/day-3)                    | :star:        |
+| [3: Binary Diagnostic](2021/day-3)                    | :star: :star: |
+| [4: Giant Squid](2021/day-4)                          |               |
+| [5: Hydrothermal Venture](2021/day-5)                 |               |
+| [6: ???](2021/day-6)                                  |               |
+| [7: ???](2021/day-7)                                  |               |
+| [8: ???](2021/day-8)                                  |               |
+| [9: ???](2021/day-9)                                  |               |
+| [10: ???](2021/day-10)                                |               |
 
 
 ## 2020
