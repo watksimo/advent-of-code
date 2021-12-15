@@ -12,7 +12,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [5: Hydrothermal Venture](2021/day-5)                 | :star: :star: |
 | [6: Lanternfish](2021/day-6)                          | :star: :star: |
 | [7: The Treachery of Whales](2021/day-7)              | :star: :star: |
-| [8: ???](2021/day-8)                                  |               |
+| [8: Seven Segment Search](2021/day-8)                 | :star: :star: |
 | [9: ???](2021/day-9)                                  |               |
 | [10: ???](2021/day-10)                                |               |
 
