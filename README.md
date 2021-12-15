@@ -11,7 +11,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [4: Giant Squid](2021/day-4)                          | :star: :star: |
 | [5: Hydrothermal Venture](2021/day-5)                 | :star: :star: |
 | [6: Lanternfish](2021/day-6)                          | :star: :star: |
-| [7: ???](2021/day-7)                                  |               |
+| [7: The Treachery of Whales](2021/day-7)              | :star: :star: |
 | [8: ???](2021/day-8)                                  |               |
 | [9: ???](2021/day-9)                                  |               |
 | [10: ???](2021/day-10)                                |               |
