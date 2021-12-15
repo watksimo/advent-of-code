@@ -9,7 +9,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [2: Dive!](2021/day-2)                                | :star: :star: |
 | [3: Binary Diagnostic](2021/day-3)                    | :star: :star: |
 | [4: Giant Squid](2021/day-4)                          | :star: :star: |
-| [5: Hydrothermal Venture](2021/day-5)                 |               |
+| [5: Hydrothermal Venture](2021/day-5)                 | :star: :star: |
 | [6: ???](2021/day-6)                                  |               |
 | [7: ???](2021/day-7)                                  |               |
 | [8: ???](2021/day-8)                                  |               |
