@@ -28,6 +28,21 @@ def find_low_points(lava_map):
 
   return low_point_idxs, low_points
 
+def floodfill(matrix, x, y, already_filled = []):
+    if matrix[x][y] != 9 and matrix[x][y] >= 0:
+        matrix[x][y] = matrix[x][y] * -1
+        if (x, y) not in already_filled: already_filled.append((x, y))
+        if x > 0:
+            floodfill(matrix,x-1,y, already_filled)
+        if x < len(matrix) - 1:
+            floodfill(matrix,x+1,y, already_filled)
+        if y > 0:
+            floodfill(matrix,x,y-1, already_filled)
+        if y < len(matrix[0]) - 1:
+            floodfill(matrix,x,y+1, already_filled)
+    return already_filled
+
+
 def get_basins(lava_map, low_points):
   basin_dict = {}
   for lp in low_points:
@@ -42,9 +57,14 @@ def get_basins(lava_map, low_points):
       
   return basin_dict
 
+def print_map(lava_map):
+  print("LAVA MAP")
+  for row in lava_map:
+    print(row)
+
 if __name__ == '__main__':
-  # fish_array = load_input("../input.txt")
-  fish_array = load_input("../test-input1.txt")
+  fish_array = load_input("../input.txt")
+  # fish_array = load_input("../test-input1.txt")
 
   # part 1 solution
   low_point_indexes, low_point_values = find_low_points(fish_array)
@@ -52,8 +72,23 @@ if __name__ == '__main__':
   # print(low_point_values)
   # print("Part 1: {}".format(risk_lvl))  #1574 too high
 
-  print(get_basins(fish_array, low_point_indexes))
+  basin_idx = []
+  for lp in low_point_indexes:
+    # print(lp)
+    filled = floodfill(fish_array, lp[0], lp[1], [])
+    basin_idx.append(filled)
+    # print("Filled: ", len(filled), filled)
+    # print_map(fish_array)
 
-  # # part 2 solution
-  # solution = solve_part2(fish_array)
-  # print("Part 2: {}".format(solution))
+  
+  result_array = [len(fill_idxs) for fill_idxs in basin_idx]
+  result_array.sort()
+  result_array = result_array[-3:]
+  # print(result_array)
+  # print(result_array)
+  
+  pt2_result = 1
+  for i in result_array: pt2_result *= i
+
+  # part 2 solution
+  print("Part 2: {}".format(pt2_result))
