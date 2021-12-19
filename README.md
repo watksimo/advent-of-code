@@ -14,7 +14,10 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [7: The Treachery of Whales](2021/day-7)              | :star: :star: |
 | [8: Seven Segment Search](2021/day-8)                 | :star: :star: |
 | [9: Smoke Basin](2021/day-9)                          | :star: :star: |
-| [10: ???](2021/day-10)                                |               |
+| [10: Syntax Scoring](2021/day-10)                     |               |
+| [11: Dumbo Octopus](2021/day-11)                      |               |
+| [12: Passage Pathing](2021/day-12)                    |               |
+| [13: Transparent Origami](2021/day-13)                |               |
 
 
 ## 2020
