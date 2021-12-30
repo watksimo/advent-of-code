@@ -17,7 +17,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [10: Syntax Scoring](2021/day-10)                     | :star: :star: |
 | [11: Dumbo Octopus](2021/day-11)                      | :star: :star: |
 | [12: Passage Pathing](2021/day-12)                    | :star: :star: |
-| [13: Transparent Origami](2021/day-13)                |               |
+| [13: Transparent Origami](2021/day-13)                | :star: :star: |
 
 
 ## 2020
