@@ -1,6 +1,18 @@
 # Advent of Code
-My solutions to the Advent of Code problems for [2019](https://adventofcode.com/2019), [2020](https://adventofcode.com/2020) & [2021](https://adventofcode.com/2021).
+My solutions to the Advent of Code problems for [2019](https://adventofcode.com/2019), [2020](https://adventofcode.com/2020), [2021](https://adventofcode.com/2021) & , [2022](https://adventofcode.com/2022)..
 
+
+## 2022
+|                             Day                       |     Stars     |
+|                             ---                       |     -----     |
+| [1: Calorie Counting](2022/day-1)                     | :star: :star: |
+| [2:                 ](2022/day-2)                     |               |
+| [3:                 ](2022/day-3)                     |               |
+| [4:                 ](2022/day-4)                     |               |
+| [5:                 ](2022/day-5)                     |               |
+| [6:                 ](2022/day-6)                     |               |
+| [7:                 ](2022/day-7)                     |               |
+| [8:                 ](2022/day-8)                     |               |
 
 ## 2021
 |                             Day                       |     Stars     |
