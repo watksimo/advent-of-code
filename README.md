@@ -6,7 +6,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 |                             Day                       |     Stars     |
 |                             ---                       |     -----     |
 | [1: Calorie Counting](2022/day-1)                     | :star: :star: |
-| [2:                 ](2022/day-2)                     |               |
+| [2: Rock Paper Scissors](2022/day-2)                  | :star: :star: |
 | [3:                 ](2022/day-3)                     |               |
 | [4:                 ](2022/day-4)                     |               |
 | [5:                 ](2022/day-5)                     |               |
