@@ -1,5 +1,5 @@
 # Advent of Code
-My solutions to the Advent of Code problems for [2019](https://adventofcode.com/2019), [2020](https://adventofcode.com/2020), [2021](https://adventofcode.com/2021) & , [2022](https://adventofcode.com/2022)..
+My solutions to the Advent of Code problems for [2019](https://adventofcode.com/2019), [2020](https://adventofcode.com/2020), [2021](https://adventofcode.com/2021) & [2022](https://adventofcode.com/2022).
 
 
 ## 2022
@@ -8,7 +8,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [1: Calorie Counting](2022/day-1)                     | :star: :star: |
 | [2: Rock Paper Scissors](2022/day-2)                  | :star: :star: |
 | [3: Rucksack Reorganization](2022/day-3)              | :star: :star: |
-| [4:                 ](2022/day-4)                     |               |
+| [4: Camp Cleanup](2022/day-4)                         | :star: :star: |
 | [5:                 ](2022/day-5)                     |               |
 | [6:                 ](2022/day-6)                     |               |
 | [7:                 ](2022/day-7)                     |               |
