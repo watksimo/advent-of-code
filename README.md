@@ -11,7 +11,7 @@ My solutions to the Advent of Code problems for [2019](https://adventofcode.com/
 | [4: Camp Cleanup](2022/day-4)                         | :star: :star: |
 | [5: Supply Stacks](2022/day-5)                        | :star: :star: |
 | [6: Tuning Trouble](2022/day-6)                       | :star: :star: |
-| [7:                 ](2022/day-7)                     |               |
+| [7: No Space Left On Device](2022/day-7)              | :star: :star: |
 | [8:                 ](2022/day-8)                     |               |
 
 ## 2021
